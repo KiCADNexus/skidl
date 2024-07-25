@@ -46,8 +46,8 @@ class Node(Placer, Router):
         )
         self.filepath = filepath
         self.top_name = top_name
-        self.sheet_name = None
-        self.sheet_filename = None
+        self.sheet_name = "" ###None
+        self.sheet_filename = "" ####None
         self.title = title
         self.flatness = flatness
         self.flattened = False
@@ -198,7 +198,7 @@ class Node(Placer, Router):
         """Return the bounding box of a hierarchical sheet as seen by its parent node."""
         bbox = BBox(Point(0, 0), Point(500, 500))
         bbox.add(Point(len("File: " + self.sheet_filename) * self.filename_sz, 0))
-        bbox.add(Point(len("Sheet: " + self.name) * self.name_sz, 0))
+        bbox.add(Point(len("Sheet: " + self.sheet_name) * self.name_sz, 0))
 
         # Pad the bounding box for extra spacing when placed.
         bbox = bbox.resize(Vector(100, 100))
